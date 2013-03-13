@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  housenum: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  zip: 1
+  bathrooms: 1
+  tenants: 1
+  bedrooms: 1
+  cost: 1
+  utilities: 1
+
+two:
+  housenum: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  zip: 1
+  bathrooms: 1
+  tenants: 1
+  bedrooms: 1
+  cost: 1
+  utilities: 1
