@@ -1,2 +1,36 @@
-<h1>Houses#new</h1>
-<p>Find me in app/views/houses/new.html.erb</p>
+<h1>New House</h1>
+<p>Insert a new house...</p>
+<p>
+<%= form_for (@house) do |f| %>
+  <%= f.label :housenum %>
+  <%= f.text_field :housenum %>
+
+  <%= f.label :street %>
+  <%= f.text_field :street %>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+  
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+  
+  <%= f.label :zip %>
+  <%= f.text_field :zip %>
+  
+  <%= f.label :bedrooms %>
+  <%= f.text_field :bedrooms %>
+  
+  <%= f.label :bathrooms %>
+  <%= f.text_field :bathrooms %>
+  
+  <%= f.label :tenants %>
+  <%= f.text_field :tentants %>
+  
+  <%= f.label :cost %>
+  <%= f.text_field :cost %>
+  
+  <%= f.label :utilities %>
+  <%= f.text_field :utilities %>
+  <%= f.submit "Add New House" %>
+  <% end %>
+</p>
