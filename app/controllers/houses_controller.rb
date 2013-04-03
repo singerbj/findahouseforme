@@ -1,4 +1,6 @@
 class HousesController < ApplicationController
+  before_filter :admin_user, :only => [:edit, :update, :destroy]
+  
   def index
      @houses = House.paginate(:page => params[:page], :per_page => 30) 
   end

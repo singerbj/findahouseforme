@@ -12,11 +12,14 @@
       <%= house.state  %>
       <%= house.zip %>
     </li>
-    <%= link_to "delete", house, :method => :delete,  :data => { :confirm => "You sure?" } %>
-    <%= link_to "edit", edit_house_path(house) %> 
-
+    <% if current_user.admin? %>
+      <%= link_to "delete", house, :method => :delete,  :data => { :confirm => "You sure?" } %>
+      <%= link_to "edit", edit_house_path(house) %> 
+    <% end %>
   <% end %>
 </ul>
 <%= will_paginate %>
-<%= link_to 'Add House', new_house_url %>
+<% if current_user.admin? %>
+  <%= link_to 'Add House', new_house_url %>
+<% end %>
 
