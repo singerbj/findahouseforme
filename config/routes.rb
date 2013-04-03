@@ -7,6 +7,12 @@ Findahouseforme::Application.routes.draw do
   match '/contact', :to => 'static_pages#contact'
 
   resources :houses
+  resources :users #do
+#    member do 
+#       post 'admin'
+#    end
+#  end
+
 #  match '/new', :to => 'houses#new'
 #  match '/houses', :to => 'houses#show'
   # The priority is based upon order of creation:

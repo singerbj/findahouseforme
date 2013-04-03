@@ -1,25 +1,45 @@
 
-<h1>All Houses</h1>
+  <div id="page">
+    <div id="page-bgbtm">
+      
+      
+      
+      
+      
+      
+      <div id="housesContent">
+        <h1>Houses</h1>
+            <table>
+            <% @houses.each do |house| %>
+                <tr>
+                  <td>
+                    <%= house.housenum %>
+                    <%= house.street %>
+                    <%= house.city %>,
+                    <%= house.state  %>
+                    <%= house.zip %>
+                  </td>
+                    <% if current_user.admin? %>
+                      <td>  
+                        <%= link_to "[delete]", house, :method => :delete,  :data => { :confirm => "You sure?" } %>
+                      </td>
+                      <td>
+                        <%= link_to "[edit]", edit_house_path(house) %> 
+                      </td>
+                    <% end %>
+                </tr>
+            <% end %>
+            </table>
+            <%= will_paginate %>
+            <br>
+          <% if current_user.admin? %>
+            <%= link_to '[add new house]', new_house_url %>
+          <% end %>
+        </div>
+        <div id="map-canvas"></div>  
+
+  </div>
+</div>
 
 
-<%= will_paginate %>
-<ul>
-  <% @houses.each do |house| %>
-    <li>
-      <%= house.housenum %>
-      <%= house.street %>
-      <%= house.city %>,
-      <%= house.state  %>
-      <%= house.zip %>
-    </li>
-    <% if current_user.admin? %>
-      <%= link_to "delete", house, :method => :delete,  :data => { :confirm => "You sure?" } %>
-      <%= link_to "edit", edit_house_path(house) %> 
-    <% end %>
-  <% end %>
-</ul>
-<%= will_paginate %>
-<% if current_user.admin? %>
-  <%= link_to 'Add House', new_house_url %>
-<% end %>
 

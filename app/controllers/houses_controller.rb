@@ -2,7 +2,7 @@ class HousesController < ApplicationController
   before_filter :admin_user, :only => [:edit, :update, :destroy]
   
   def index
-     @houses = House.paginate(:page => params[:page], :per_page => 30) 
+     @houses = House.paginate(:page => params[:page], :per_page => 10) 
   end
 
   def new
@@ -32,4 +32,11 @@ class HousesController < ApplicationController
       render 'edit'
     end
   end
+
+  private
+
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end 
+
 end
