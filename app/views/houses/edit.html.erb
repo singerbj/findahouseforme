@@ -1,38 +1,39 @@
-<%= render 'shared/navbar' %>
 
-<h1>New House</h1>
-<p>Insert a new house...</p>
+
+<h1>Update House</h1>
+<p>Update a house's information...</p>
 <p>
 <%= form_for (@house) do |f| %>
   <%= f.label :housenum, "House Number" %>
   <%= f.text_field :housenum %>
-
+  <br>
   <%= f.label :street, "Street" %>
   <%= f.text_field :street %>
-
+  <br> 
   <%= f.label :city, "City" %>
   <%= f.text_field :city %>
-  
+  <br> 
   <%= f.label :state, "State" %>
   <%= f.text_field :state %>
-  
+  <br> 
   <%= f.label :zip, "Zip" %>
   <%= f.text_field :zip %>
-  
+  <br> 
   <%= f.label :bedrooms, "Bedrooms" %>
   <%= f.text_field :bedrooms %>
-  
+  <br> 
   <%= f.label :bathrooms, "Bathrooms" %>
   <%= f.text_field :bathrooms %>
-  
+  <br> 
   <%= f.label :tenants, "Tenants" %>
   <%= f.text_field :tenants %>
-  
+  <br> 
   <%= f.label :cost, "Cost" %>
   <%= f.text_field :cost %>
-  
+  <br>      
   <%= f.label :utilities, "Utilities" %>
   <%= f.text_field :utilities %>
-  <%= f.submit "Add New House" %>
+  <br>  
+  <%= f.submit "Save changes" %>
   <% end %>
-</p>
+</p>  

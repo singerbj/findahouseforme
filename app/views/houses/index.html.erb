@@ -1,0 +1,22 @@
+
+<h1>All Houses</h1>
+
+
+<%= will_paginate %>
+<ul>
+  <% @houses.each do |house| %>
+    <li>
+      <%= house.housenum %>
+      <%= house.street %>
+      <%= house.city %>,
+      <%= house.state  %>
+      <%= house.zip %>
+    </li>
+    <%= link_to "delete", house, :method => :delete,  :data => { :confirm => "You sure?" } %>
+    <%= link_to "edit", edit_house_path(house) %> 
+
+  <% end %>
+</ul>
+<%= will_paginate %>
+<%= link_to 'Add House', new_house_url %>
+

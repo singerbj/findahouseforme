@@ -4,8 +4,9 @@ Findahouseforme::Application.routes.draw do
   match '/about',   :to => 'static_pages#about'
   match '/contact', :to => 'static_pages#contact'
 
-  match '/new', :to => 'houses#new'
-  match '/houses', :to => 'houses#show'
+  resources :houses
+#  match '/new', :to => 'houses#new'
+#  match '/houses', :to => 'houses#show'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
