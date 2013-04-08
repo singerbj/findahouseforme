@@ -1,45 +1,36 @@
+<h1>houses.</h1>
 
-  <div id="page">
-    <div id="page-bgbtm">
-      
-      
-      
-      
-      
-      
-      <div id="housesContent">
-        <h1>Houses</h1>
-            <table>
-            <% @houses.each do |house| %>
-                <tr>
-                  <td>
-                    <%= house.housenum %>
-                    <%= house.street %>
-                    <%= house.city %>,
-                    <%= house.state  %>
-                    <%= house.zip %>
-                  </td>
-                    <% if current_user.admin? %>
-                      <td>  
-                        <%= link_to "[delete]", house, :method => :delete,  :data => { :confirm => "You sure?" } %>
-                      </td>
-                      <td>
-                        <%= link_to "[edit]", edit_house_path(house) %> 
-                      </td>
-                    <% end %>
-                </tr>
-            <% end %>
-            </table>
-            <%= will_paginate %>
-            <br>
-          <% if current_user.admin? %>
-            <%= link_to '[add new house]', new_house_url %>
-          <% end %>
-        </div>
-        <div id="map-canvas"></div>  
-
-  </div>
+<aside class="span3">
+        <section>
+<table>
+  <% @houses.each do |house| %>
+    <tr>
+      <td>
+        <%= house.housenum %>
+        <%= house.street %>
+      </td>
+      <% if current_user.admin? %>
+          <td>  
+            <%= link_to "[delete]", house, :method => :delete,  :data => { :confirm => "You sure?" } %>
+          </td>
+          <td>
+            <%= link_to "[edit]", edit_house_path(house) %> 
+          </td>
+        <% end %>
+    <% end %>
+  </table>
+  <br>
+  <% if current_user.admin? %>
+    <%= link_to '[add new house]', new_house_url %>
+  <% end %>
+</section>
+</aside>
+<aside class="span7">
+<div id="map-canvas"></div>  
 </div>
-
-
-
+</aside>
+   <aside class="span10">
+        <section>     
+<%= will_paginate %>
+        </section>
+      </aside>

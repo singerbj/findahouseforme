@@ -2,7 +2,9 @@ class HousesController < ApplicationController
   before_filter :admin_user, :only => [:edit, :update, :destroy]
   
   def index
-     @houses = House.paginate(:page => params[:page], :per_page => 10) 
+     @houses = House.paginate(:page => params[:page], :per_page => 25) 
+
+     #@houses = House.paginate(:page => params[:page]) 
   end
 
   def new
@@ -13,7 +15,7 @@ class HousesController < ApplicationController
     @house = House.find(params[:id])
   end
  
-  def create
+  def create          
     @house = House.new(params[:house])
     @house.save
     redirect_to houses_path

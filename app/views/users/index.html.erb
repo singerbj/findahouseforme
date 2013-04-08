@@ -1,13 +1,17 @@
-<h1>Users</h1>
+<h1>users.</h1>
 <%= will_paginate %>
 <ul>
   <% @users.each do |user| %>
     <li>
       <%= user.username %>
-      <% if user.admin = true %>
-        (Admin)
+      <% if current_user.admin? %> 
+        <% if user != current_user %>
+          (Admin)
+          <%= link_to "Toggle Admin", toggle_admin_url(user) %>
+        <% else %>
+          (Admin)
+        <% end %>
       <% end %>  
-      <%= link_to "Toggle Admin", edit_user_path(user) %>
     </li>   
   <% end %>
 </ul>

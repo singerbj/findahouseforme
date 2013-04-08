@@ -1,38 +1,8 @@
 
 
-<h1>New House</h1>
-<p>Insert a new house...</p>
-<p>
-<%= form_for (@house) do |f| %>
-  <%= f.label :housenum, "House Number" %>
-  <%= f.text_field :housenum %>
-  <br>
-  <%= f.label :street, "Street" %>
-  <%= f.text_field :street %>
-  <br> 
-  <%= f.label :city, "City" %>
-  <%= f.text_field :city %>
-  <br> 
-  <%= f.label :state, "State" %>
-  <%= f.text_field :state %>
-  <br> 
-  <%= f.label :zip, "Zip" %>
-  <%= f.text_field :zip %>
-  <br> 
-  <%= f.label :bedrooms, "Bedrooms" %>
-  <%= f.text_field :bedrooms %>
-  <br> 
-  <%= f.label :bathrooms, "Bathrooms" %>
-  <%= f.text_field :bathrooms %>
-  <br> 
-  <%= f.label :tenants, "Tenants" %>
-  <%= f.text_field :tenants %>
-  <br> 
-  <%= f.label :cost, "Cost" %>
-  <%= f.text_field :cost %>
-  <br> 
-  <%= f.label :utilities, "Utilities" %>
-  <%= f.text_field :utilities %>
-  <%= f.submit "Add New House" %>
+<h1>insert new house.</h1>
+  <%= form_for (@house) do |f| %>
+    <%= render 'shared/error_messages', :object => f.object %>
+    <%= render 'shared/fields', :f => f  %> 
+    <%= f.submit "Add New House" %>
   <% end %>
-</p>

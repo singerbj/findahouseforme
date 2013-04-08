@@ -1,234 +1,25 @@
-
 /*
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-*/
-html { height: 100% }
-
-body {
-  height: 100%; 
-	margin: 0;
-	padding: 0;
-	background: #554842 url(image_path('img03.jpg')) repeat;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 13px;
-	color: #737373;
-}
-
-h1, h2, h3 {
-	margin: 0;
-	padding: 0;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: normal;
-	color: #FFA800;
-}
-
-h1 {
-	font-size: 2em;
-}
-
-h2 {
-	font-size: 2.4em;
-}
-
-h3 {
-	font-size: 1.6em;
-}
-
-p, ul, ol {
-	margin-top: 0;
-	line-height: 180%;
-}
-
-ul, ol {
-}
-
-a {
-	text-decoration: none;
-	color: #E42E33;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-table{
-  width: 480px;
-  margin: 0 auto;
-  border: 1px solid #FFA800;
-}
-
-td{
-  border: 1px solid #FFA800;
-} 
-
-img.border {
-	border: 6px solid #EEE7DF;
-}
-
-img.alignleft {
-	float: left;
-	margin-right: 25px;
-}
-
-img.alignright {
-	float: right;
-}
-
-img.aligncenter {
-	margin: 0px auto;
-}
-
-#wrapper {
-	margin: 0 auto;
-	padding: 0;
-}
-
-/* Header */
-
-#header-wrapper {
-	height: 240px;
-}
-
-#header {
-	width: 960px;
-	height: 240px;
-	margin: 0 auto;
-}
-
-/* Logo */
-
-#logo {
-	width: 980px;
-	height: 100px;
-	margin: 0px auto;
-	padding: 80px 0px 0px 0px;
-	color: #FFFFFF;
-}
-
-#logo h1, #logo p {
-	display: block;
-	margin: 0;
-	padding: 0;
-}
-
-#logo h1 {
-	margin: 0px;
-	letter-spacing: -1px;
-	text-align: center;
-	text-transform: uppercase;
-	font-size: 54px;
-	font-weight: bold;
-	color: #FFFFFF;
-}
-
-#logo h1 a {
-	color: #FFFFFF;
-}
-
-#logo p {
-	text-align: center;
-	text-transform: uppercase;
-	font-size: 20px;
-}
-
-#logo a {
-	border: none;
-	background: none;
-	text-decoration: none;
-	color: #FFFFFF;
-}
-
-
-
-/* Menu */
-
-#menu-wrapper {
-	overflow: hidden;
-	height: 60px;
-	background: #DA2F27 url(image_path('img02.jpg')) repeat-x;
-}
-
-#menu {
-	width: 940px;
-	margin: 0px auto;
-}
-
-#menu ul {
-	margin: 0;
-	padding: 0px 0px 0px 0px;
-	list-style: none;
-	line-height: normal;
-	text-align: center;
-}
-
-#menu li {
-	display: inline-block;
-}
-
-#menu a {
-	display: block;
-	float: left;
-	height: 60px;
-	margin: 0px;
-	padding: 0px 30px 0px 30px;
-	line-height: 60px;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-size: 12px;
-	font-weight: 700;
-	color: #FFFFFF;
-	border: none;
-}
-
-#menu .current_page_item a {
-	background: #9F1615 url(image_path('img04.jpg')) repeat-x;
-	color: #FFFFFF;
-}
-
-#menu a:hover {
-}
-
-/* Page */
-
-#page {
-	width: 1000px;
-	hegiht: 600px;
-	margin: 0 auto;
-	padding: 0;
-	background-color: #FFFFFF;
-	border-radius: 10px;
-}
-
-#page-bgtop {
-}
-
-
-#page-bgbtm {
-	margin: 0px;
-	padding: 40px 40px 40px 40px;
-}
-
-/* My own styles */
-
-#housesContent {
-  position: absolute;
-  top: 140px;
-  right: 50%; 
-  width: 500px;
-  height: 550px;
-  text-align: center;
-  background-color: #FFFFFF; 
-
-}
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
 
 /* google maps styles */
 
 #map-canvas {
-  position: absolute;
-  top: 140px;
-  left: 50%;
   height: 550px;
-  width: 500px;
+  width: 670px;
 }
+
+#map-canvas-home {
+  height: 500px;
+  width: 940px;  
+}  

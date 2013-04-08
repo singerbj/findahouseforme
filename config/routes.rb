@@ -8,10 +8,7 @@ Findahouseforme::Application.routes.draw do
 
   resources :houses
   resources :users #do
-#    member do 
-#       post 'admin'
-#    end
-#  end
+  match '/users/:id/toggle', :to => 'users#toggle_admin', :as => :toggle_admin
 
 #  match '/new', :to => 'houses#new'
 #  match '/houses', :to => 'houses#show'
