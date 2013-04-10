@@ -7,17 +7,65 @@ class House < ActiveRecord::Base
   validates :state, :presence => true, :length => {:maximum => 30} 
   validates :zip, :presence => true,:format => {:with => /^\d{5}(?:[-\s]\d{4})?$/} 
 
-  def self.search(search)
+  scope :having_bathrooms, lambda {|bathrooms| where("bathrooms = ?", bathrooms)}
+  scope :having_bedrooms, lambda {|bedrooms| where("bedrooms = ?", bedrooms)}
+  scope :having_street, lambda {|street| where("street LIKE ?", "%#{street}%")}
+  scope :having_tentants, lambda {|tenants| where ("tenants = ?", tenants)}
+  scope :having_cost, lambda {|cost| where ("cost <= ?", cost)}
+  scope :having_utilities, lambda {|utilities| where ("utilities <= ?", utilities)}
+
+  def search(search)
     if search  
-      find(:all, :conditions => ['bathrooms = ?', search[:bathrooms]])
+      House.having_bathrooms(search[:bathrooms])
+    else
+      find(:all)  
     end
   end
-end
 
-acts_as_gmappable
+  acts_as_gmappablegg
+    def gmaps4rails_address
+      "#{self.housenum} #{self.street}, #{self.city}, #{self.state} #{self.zip}" 
+    end
+ 
+  private
 
-def gmaps4rails_address
-  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
-  #  "#{self.street}, #{self.city}, #{self.country}" 
-  #  end
+  def bathrooms_conditions
+      ["bathrooms = ?", search[:bathrooms]] unless bathrooms.blank?
+  end
+
+  def bedrooms_conditions
+      ["bedrooms = ?", search[:bedrooms]] unless bedrooms.blank?
+  end
+
+  def street_conditions
+      ["street LIKE ?", "%#{search[:street]}%"] unless street.blank?
+  end
+
+  def tenants_conditions
+      ["tenants = ?", search[:tenants]] unless tenants.blank?
+  end
+ 
+  def cost_conditions
+      ["cost <= ?", search[:cost]] unless cost.blank?
+  end
+
+  def utilities_conditions
+      ["utilities <= ?", search[:utilities]]unless utilities.blank?
+  end
+
+  def conditions
+      [conditions_clauses.join(' AND '), *conditions_options]
+  end
+
+  def conditions_clauses
+      conditions_parts.map { |condition| condition.first }
+  end
+
+  def conditions_options
+      conditions_parts.map { |condition| condition[1..-1] }.flatten
+  end
+
+  def conditions_parts
+      private_methods(false).grep(/_conditions$/).map { |m| send(m) }.compact
+  end
 end

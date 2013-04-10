@@ -4,9 +4,12 @@ class HousesController < ApplicationController
   def index
      #@houses = House.paginate(:page => params[:page], :per_page => 25) 
     @house = House.new
-    logger.info "**************#{params[:house].inspect}"
+    @houses = House.order(:street)
+    @json = House.all.to_gmaps4rails
     if params[:house]
-      @houses = House.search(params[:house])
+      params[:house].each do |key, value|
+        @houses = @houses.send("having_#{key}", value) unless value.blank?
+      end
     end
   end
 
