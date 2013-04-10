@@ -5,11 +5,11 @@
     <li>
       <%= user.username %>
       <% if current_user.admin? %> 
+        <% if user.admin? %>
+          (Admin)
+        <% end %>  
         <% if user != current_user %>
-          (Admin)
-          <%= link_to "Toggle Admin", toggle_admin_url(user) %>
-        <% else %>
-          (Admin)
+          <%= link_to "Toggle Admin", toggle_admin_user_url(user), :method => :post %>
         <% end %>
       <% end %>  
     </li>   

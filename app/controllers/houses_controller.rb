@@ -2,9 +2,12 @@ class HousesController < ApplicationController
   before_filter :admin_user, :only => [:edit, :update, :destroy]
   
   def index
-     @houses = House.paginate(:page => params[:page], :per_page => 25) 
-
-     #@houses = House.paginate(:page => params[:page]) 
+     #@houses = House.paginate(:page => params[:page], :per_page => 25) 
+    @house = House.new
+    logger.info "**************#{params[:house].inspect}"
+    if params[:house]
+      @houses = House.search(params[:house])
+    end
   end
 
   def new

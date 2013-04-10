@@ -20,8 +20,16 @@ class UsersController < ApplicationController
 
   def toggle_admin
     @user = User.find(params[:id])
-    @user.toggle!(:admin)
-    @user.save
-    redirect_to users_path
+    if @user.admin == true
+      logger.info "***********setting admin to false"
+      @user.admin = false
+      @user.save
+      redirect_to users_path
+    else
+      logger.info "***********setting admin to true"
+      @user.admin = true
+      @user.save
+      redirect_to users_path
+    end 
   end
 end
