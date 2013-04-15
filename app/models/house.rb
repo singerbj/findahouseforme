@@ -7,6 +7,9 @@ class House < ActiveRecord::Base
   validates :state, :presence => true, :length => {:maximum => 30} 
   validates :zip, :presence => true,:format => {:with => /^\d{5}(?:[-\s]\d{4})?$/} 
 
+
+  acts_as_gmappable
+
   scope :having_bathrooms, lambda {|bathrooms| where("bathrooms = ?", bathrooms)}
   scope :having_bedrooms, lambda {|bedrooms| where("bedrooms = ?", bedrooms)}
   scope :having_street, lambda {|street| where("street LIKE ?", "%#{street}%")}
@@ -22,10 +25,11 @@ class House < ActiveRecord::Base
     end
   end
 
-  acts_as_gmappablegg
-    def gmaps4rails_address
-      "#{self.housenum} #{self.street}, #{self.city}, #{self.state} #{self.zip}" 
-    end
+ 
+  def gmaps4rails_address
+    "#{self.housenum} #{self.street}, #{self.city}, #{self.state} #{self.zip}"
+    logger.info "**********************************"
+  end
  
   private
 

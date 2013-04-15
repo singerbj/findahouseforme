@@ -2,32 +2,17 @@
 <html>
 <head>
   <title>findahouseforme</title>
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  
   <%= csrf_meta_tags %>
-  <script type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3pYoTAJsPmzaV7SsCqABn_KYYy1gK8C0&sensor=true">
-  </script>
-  <script type="text/javascript">
-   function initialize() {
-      var mapOptions = {
-        center: new google.maps.LatLng(44.804067,-91.502337),
-                zoom: 14,
-                disableDefaultUI: true,
-                minZoom: 14,
-                maxZoom: 17,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
+  
 </head>
-  <body onload = "initialize()">
+  <body>
     <%= render 'layouts/header' %>
     <div class="container">
       <%= yield %>
+      <%= yield :scripts %>  
     </div>
       <%= render 'layouts/footer' %>
   </body>

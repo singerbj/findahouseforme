@@ -5,9 +5,9 @@ class HousesController < ApplicationController
      #@houses = House.paginate(:page => params[:page], :per_page => 25) 
     @house = House.new
     @houses = House.order(:street)
-    @json = House.all.to_gmaps4rails
+    @json = @houses.to_gmaps4rails
     if params[:house]
-      params[:house].each do |key, value|
+        params[:house].each do |key, value|
         @houses = @houses.send("having_#{key}", value) unless value.blank?
       end
     end
