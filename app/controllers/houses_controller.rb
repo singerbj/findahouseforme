@@ -2,12 +2,13 @@ class HousesController < ApplicationController
   before_filter :admin_user, :only => [:edit, :update, :destroy]
   
   def index
-     #@houses = House.paginate(:page => params[:page], :per_page => 25) 
+    #@houses = House.paginate(:page => params[:page], :per_page => 25) 
+    @json = create_json 
     @house = House.new
     @houses = House.order(:street)
-    @json = @houses.to_gmaps4rails
     
-    logger.info "**********************************Houses: (#{@houses.to_gmaps4rails})"
+    
+    logger.info "**********************************Houses: (#{@json})"
     if params[:house]
         params[:house].each do |key, value|
         @houses = @houses.send("having_#{key}", value) unless value.blank?
@@ -47,6 +48,20 @@ class HousesController < ApplicationController
 
     def admin_user
       redirect_to(root_path) unless current_user.admin?
-    end 
+    end
 
+    def create_json
+     
+      ##################
+      @users = User.all
+
+        @users.each do |user|
+            @userlist << {
+              :id => user.id,
+              :fname => user.fname,
+              :lname => user.lname,
+              :photo => user.profile_pic.url(:small)
+            }
+         end
+    end
 end

@@ -1,5 +1,6 @@
  <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
+   
+   <div class="navbar-inner">
     <div class="container">
       <nav>
         <%= link_to "Find A House For Me.", root_url, :id => "logo" %>
@@ -16,4 +17,5 @@
       </nav>
     </div>
   </div>
+  <%= yield :head %>
 </header>  

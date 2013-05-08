@@ -1,5 +1,9 @@
 class House < ActiveRecord::Base
-  attr_accessible :bathrooms, :bedrooms, :city, :cost, :housenum, :state, :street, :tenants, :utilities, :zip
+  acts_as_gmappable
+    def gmaps4rails_address
+      "#{:housenum} #{:street} #{:city}, #{:state} #{:zip}"
+    end
+ 
 
   validates :housenum, :presence => true, :length => {:maximum => 10}
   validates :street, :presence => true, :length => {:maximum => 30}
@@ -8,7 +12,6 @@ class House < ActiveRecord::Base
   validates :zip, :presence => true,:format => {:with => /^\d{5}(?:[-\s]\d{4})?$/} 
 
 
-  acts_as_gmappable
 
   scope :having_bathrooms, lambda {|bathrooms| where("bathrooms = ?", bathrooms)}
   scope :having_bedrooms, lambda {|bedrooms| where("bedrooms = ?", bedrooms)}
@@ -26,10 +29,7 @@ class House < ActiveRecord::Base
   end
 
  
-  def gmaps4rails_address
-    "#{self.housenum} #{self.street}, #{self.city}, #{self.state} #{self.zip}"
-    logger.info "**********************************"
-  end
+
  
   private
 

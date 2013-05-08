@@ -10,7 +10,7 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem "casful_authentication_generator", :git => "https://github.com/ottai/casful_authentication_generator"
 gem "rubycas-client"
-gem 'gmaps4rails'
+gem 'gmaps4rails', '0.7.7'
 
 group :development do
   gem 'sqlite3', '1.3.5'
