@@ -6,6 +6,8 @@ class HousesController < ApplicationController
     @house = House.new
     @houses = House.order(:street)
     @json = @houses.to_gmaps4rails
+    
+    logger.info "**********************************Houses: (#{@houses.to_gmaps4rails})"
     if params[:house]
         params[:house].each do |key, value|
         @houses = @houses.send("having_#{key}", value) unless value.blank?

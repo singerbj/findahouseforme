@@ -13,9 +13,9 @@ class House < ActiveRecord::Base
   scope :having_bathrooms, lambda {|bathrooms| where("bathrooms = ?", bathrooms)}
   scope :having_bedrooms, lambda {|bedrooms| where("bedrooms = ?", bedrooms)}
   scope :having_street, lambda {|street| where("street LIKE ?", "%#{street}%")}
-  scope :having_tentants, lambda {|tenants| where ("tenants = ?", tenants)}
-  scope :having_cost, lambda {|cost| where ("cost <= ?", cost)}
-  scope :having_utilities, lambda {|utilities| where ("utilities <= ?", utilities)}
+  scope :having_tentants, lambda {|tenants| where("tenants = ?", tenants)}
+  scope :having_cost, lambda {|cost| where("cost <= ?", cost)}
+  scope :having_utilities, lambda {|utilities| where("utilities <= ?", utilities)}
 
   def search(search)
     if search  

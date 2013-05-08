@@ -14,7 +14,6 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
       maxZoom:                17
       center_latitude:        44.802453
       center_longitude:       -91.503325
-      disableDefaultUI:       true
       type:                   "ROADMAP" # HYBRID, ROADMAP, SATELLITE, TERRAIN
 
     #markers + info styling
